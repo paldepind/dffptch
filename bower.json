@@ -1,0 +1,32 @@
+{
+  "name": "dffptch",
+  "main": "dffptch.js",
+  "version": "1.0.0",
+  "authors": [
+    "paldepind <simonfv@gmail.com>"
+  ],
+  "description": "Micro diff and patch library that generates compact diffs",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "diff",
+    "patch"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  },
+  "devDependencies": {
+    "sinonjs": "~1.10.2"
+  }
+}
