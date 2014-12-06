@@ -1,7 +1,5 @@
 // dffptch
 
-(function (exports) {
-
 function shortyMap(strings, // passed array
                    prev, // previously returned element
                    map, // the map
@@ -74,5 +72,3 @@ exports.patch = function patch(obj, delta) {
     patch(obj[map[key]], delta.r[key]);
   });
 };
-
-}(this.dffptch = {}));
