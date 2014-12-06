@@ -1,12 +1,12 @@
 {
   "name": "dffptch",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Micro diff and patch library that generates compact diffs",
-  "main": "dffptch.js",
+  "main": "dist/dffptch-node.js",
   "author": "Simon Friis Vindum <simon@vindum.io>",
   "license": "MIT",
   "dependencies": {
-  }
+  },
   "devDependencies": {
   }
 }
