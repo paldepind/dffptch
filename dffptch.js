@@ -1,30 +1,15 @@
 // dffptch
 
-function shortyMap(strings, // passed array
-                   prev, // previously returned element
-                   map, // the map
-                   n, // new element to be returned
-                   cutPos // string size counter
-                   ) {
-  map = {};
-  strings.map(function(string) {
-    for(cutPos = 1; (n = string.slice(0,cutPos++)) <= prev;);
-    map[prev = n] = string;
-  });
-  return map;
-}
-
-var O = Object;
-var keys = O.keys;
+var O = Object; // Our own binding to Object – global objects can't be minified
+var keys = O.keys; // Same for keys, we use this funcion quite a bit
 
 exports.diff = function diff(a, b) {
   var aKeys = keys(a).sort(),
       bKeys = keys(b).sort(),
-      shorts = keys(shortyMap(aKeys)),
       delta = {}, adds = {}, mods = {}, dels = [], recurses = {},
       aI = 0, bI = 0;
   while(aKeys[aI] || bKeys[bI]) {
-    var aKey = aKeys[aI], shortAKey = shorts[aI],
+    var aKey = aKeys[aI], shortAKey = String.fromCharCode(aI+32),
         bKey = bKeys[bI],
         aVal = a[aKey], bVal = b[bKey];
     if (aKey == bKey) {
@@ -54,21 +39,15 @@ exports.diff = function diff(a, b) {
 };
 
 exports.patch = function patch(obj, delta) {
-  var map = shortyMap(keys(obj).sort());
-  // handle additions
-  keys(delta.a || {}).map(function(key) {
-    obj[key] = delta.a[key];
-  });
-  // handle modifications
-  keys(delta.m || {}).map(function(key) {
-    obj[map[key]] = delta.m[key];
-  });
-  // handle deletions
-  (delta.d || []).map(function(key) {
-    delete obj[map[key]];
-  });
-  // recurse
-  keys((delta.r || {})).map(function(key) {
-    patch(obj[map[key]], delta.r[key]);
-  });
+  var operation, key, val, longKey, objKeys = keys(obj).sort();
+  for (operation in delta) {
+    for (key in delta[operation]) {
+      val = delta[operation][key];
+      longKey = objKeys[(operation != 'd' ? key : val).charCodeAt()-32];
+      operation == 'a' ? obj[key] = val : // addition
+      operation == 'm' ? obj[longKey] = val : // modification
+      operation == 'd' ? delete obj[longKey] : // deletion
+                        patch(obj[longKey], val); // recuse
+    }
+  }
 };
