@@ -20,6 +20,8 @@ Features
   are found in a single pass over both objects at the same time.
 * __Very small__ – Too many huge libraries claim to be lightweight! This one is
   not among them. By having a tight focus on its targeted use case and a
-  carefull implementation dffptch.js is < 800B minified. Gzipped it's < 500KB.
-* __Readable source code__ – Well commented and less than 70 sloc. It's
-  slightly golfed but thanks to UglifyJS2 it can be kept to a minimum. 
+  carefull implementation dffptch.js is barely 600B minified. Gzipped it's 420KB.
+* __Readable source code__ – Well commented and less than 50 sloc. UglifyJS2
+  takes care of almost all golfing.
+* __Availability__: Available both as a CommonJS module, a AMD module and a
+  plain old global export.
