@@ -9,7 +9,7 @@ exports.diff = function diff(a, b) {
       delta = {}, adds = {}, mods = {}, dels = [], recurses = {},
       aI = 0, bI = 0;
   while(aKeys[aI] || bKeys[bI]) {
-    var aKey = aKeys[aI], shortAKey = String.fromCharCode(aI+32),
+    var aKey = aKeys[aI], shortAKey = String.fromCharCode(aI+48),
         bKey = bKeys[bI],
         aVal = a[aKey], bVal = b[bKey];
     if (aKey == bKey) {
@@ -43,7 +43,7 @@ exports.patch = function patch(obj, delta) {
   for (operation in delta) {
     for (key in delta[operation]) {
       val = delta[operation][key];
-      longKey = objKeys[(operation != 'd' ? key : val).charCodeAt()-32];
+      longKey = objKeys[(operation != 'd' ? key : val).charCodeAt()-48];
       operation == 'a' ? obj[key] = val : // addition
       operation == 'm' ? obj[longKey] = val : // modification
       operation == 'd' ? delete obj[longKey] : // deletion
