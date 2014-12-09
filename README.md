@@ -33,8 +33,9 @@ var updatedRabbit = {
   } 
 };
 var delta = diff(rabbit, updatedRabbit);
-// Delta is now a compact diff representing 1 deletion,
-// 2 modifications and 1 nested added property
+// Delta is now a compact diff representing 1 deletion, 2 modifications and 1
+// nested added property. The diff format might look odd, but it's very simple.
+// The format is explained below.
 assert.deepEqual(delta,
                  {"d": ["1"],
                   "m": {"0": 3, "2": "grey and white"},
@@ -70,6 +71,41 @@ or
 ```
 npm install dffptch
 ```
+
+How the diff format works
+-------------------------
+The diff format consists of an object with up to four properties. `a` is an
+object representing added properties. Each key is the name of a property and
+each value is the value assigned to the property. `m` is a similar object but
+for modified properties and with shortened keys. `d` is an array with
+deleted properties as elements. `r` contains all changes to nested objects
+and arrays, it recursively contains the four properties as well for the
+nested object. An example
+```javascript
+{
+  a: {foo: 'bar'}, // One aded property
+  m: {'3': 'hello'}, // One modified property
+  d: ['5'], // One deleted property
+  r: {'3': { ... }} Changes to one nested object
+}
+```
+In `m`, `d` and `r` the property names are shortened to single characters.
+The keys in the original object are sorted, giving each key a unique number.
+Then this number is converted to a character using JavaScripts `String.fromCharCode`
+with an offset so the first key is assigned to the char '1'
+(this avoids the characters '/' and '\' that require escaping in JSON.
+
+So for this object
+```javascript
+{
+  foo: 'bar',
+  sample: 'object',
+  an: 'example'
+}
+```
+we'd get the sorted keys `['an', 'foo', 'sample']` and thus `an` whould be shortened
+to `'1'`, `foo` to `'2'` and `sample` to `3`. There are _a lot_ of uniqode characters
+so this approach is safe no matter how many properties your objects have.
 
 Browser support
 ---------------
