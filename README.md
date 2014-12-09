@@ -54,7 +54,7 @@ Features
 * __Very small__ – Too many huge libraries claim to be lightweight! This one is
   not among them. By having a tight focus on its targeted use case and a
   carefull implementation dffptch.js is barely 600B minified. Gzipped it's only
-  420KB.
+  420B.
 * __Readable source code__ – Well commented and less than 50 sloc. UglifyJS2
   takes care of almost all golfing.
 * __Availability__: Available both as a CommonJS module, a AMD module and a
