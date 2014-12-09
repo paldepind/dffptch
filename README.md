@@ -1,4 +1,4 @@
-dffptch.js
+Δ dffptch.js
 ==========
 A micro library for diffing and patching JSON objects using a compact diff format.
 
@@ -34,10 +34,10 @@ var updatedRabbit = {
 };
 var delta = diff(rabbit, updatedRabbit);
 // Delta is now a compact diff representing 1 deletion,
-// 2 modifications and 1 nested modification
+// 2 modifications and 1 nested added property
 assert.deepEqual(delta,
                  {"d": ["1"],
-                  "m": {"0":3, "2":"grey and white"},
+                  "m": {"0": 3, "2": "grey and white"},
                   "r": {"3": {"a": {"carrots": "he likes them a lot"}}}
                  });
 ```
