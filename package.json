@@ -4,7 +4,7 @@
   "description": "Micro diff and patch library that generates compact diffs",
   "main": "dist/dffptch-node.js",
   "author": "Simon Friis Vindum <simon@vindum.io>",
-  "license": "MIT",
+  "license": "CC0-1.0",
   "dependencies": {
   },
   "devDependencies": {

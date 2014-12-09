@@ -84,3 +84,11 @@ nested collection whould complicate dffptch.js significantly with little
 benefit. Simply flattening your data before feeding it to dffptch.js avoids the
 problem.
 
+License
+-------
+dffptch.js is made by Simon Friis Vindum. But copyright declarations wastes bandwith.
+thus dffptch.js is public domain or [WTFPL](http://en.wikipedia.org/wiki/WTFPL) or
+[CC0](http://en.wikipedia.org/wiki/Creative_Commons_license#Zero_.2F_Public_domain).
+Do what you want but please [follow me on Twitter](https://twitter.com/paldepind)
+or give a GitHub star if you feel like it.
+
