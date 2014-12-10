@@ -4,9 +4,9 @@ A micro library for diffing and patching JSON objects using a compact diff forma
 
 Why
 ---
-If you're JavaScript client is sending a lot of updates to your backend – like
+If you're JavaScript client is sending a lot of updates to your backend – as it might
 in a collaborative app, a real-time game or a continously saving app – then
-transfering the entire changed JSON wastes a lot of bandwith. dffptch.js
+transfering the entire changed JSON wastes a lot of bandwitdh. dffptch.js
 makes sending only the changes in a compact format very easy.
 
 Example
@@ -34,8 +34,8 @@ var updatedRabbit = {
 };
 var delta = diff(rabbit, updatedRabbit);
 // Delta is now a compact diff representing 1 deletion, 2 modifications and 1
-// nested added property. The diff format might look odd, but it's very simple.
-// The format is explained below.
+// nested added property. The diff format might look odd, but is actually very
+// simple as explained below.
 assert.deepEqual(delta,
                  {"d": ["1"],
                   "m": {"0": 3, "2": "grey and white"},
@@ -45,7 +45,7 @@ assert.deepEqual(delta,
 
 Features
 --------
-* __Does what you expect__ – Handles all types of changes. Added, modified and
+* __What you expect__ – Handles all types of changes. Added, modified and
   deleted properties. Nested objects and arrays.
 * __Compact one way diffs__ – No needles verbosity. Property names
   are shortened to single characters while still remaining unambiguous.
@@ -62,6 +62,12 @@ Features
   plain old global export.
 * __Tested__: The test suite covers every feature.
 
+Compared to other diff & patch libraries
+----------------------------------------
+* It is significantly smaller. Ten times smaller than some alternatives.
+* In common cases dffptch.js generates smaller diffs because it only patches one way and thus can shorten property name.
+* It doesn't handle complex array changes as well as others. See the section on limitations below.
+
 Install
 -------
 ```
@@ -74,13 +80,15 @@ npm install dffptch
 
 How the diff format works
 -------------------------
-The diff format consists of an object with up to four properties. `a` is an
+The diff format is an object with up to four properties. `a` is an
 object representing added properties. Each key is the name of a property and
 each value is the value assigned to the property. `m` is a similar object but
 for modified properties and with shortened keys. `d` is an array with
 deleted properties as elements. `r` contains all changes to nested objects
 and arrays, it recursively contains the four properties as well for the
-nested object. An example
+nested object.
+
+An example
 ```javascript
 {
   a: {foo: 'bar'}, // One aded property
@@ -89,11 +97,12 @@ nested object. An example
   r: {'3': { ... }} Changes to one nested object
 }
 ```
-In `m`, `d` and `r` the property names are shortened to single characters.
-The keys in the original object are sorted, giving each key a unique number.
-Then this number is converted to a character using JavaScripts `String.fromCharCode`
-with an offset so the first key is assigned to the char '1'
-(this avoids the characters '/' and '\' that require escaping in JSON.
+In `m`, `d` and `r` the property names are shortened to single characters.  The
+algorithm works like this: The keys in the original object are sorted, giving
+each key a unique number.  The number is converted to a character using
+JavaScripts `String.fromCharCode` with an offset so the first key is assigned
+to the char '1' (this avoids the characters '/' and '\' that require escaping
+in JSON.
 
 So for this object
 ```javascript
@@ -131,7 +140,7 @@ problem.
 
 License
 -------
-dffptch.js is made by Simon Friis Vindum. But copyright declarations wastes bandwith.
+dffptch.js is made by Simon Friis Vindum. But copyright declarations wastes bandwidth.
 thus dffptch.js is public domain or [WTFPL](http://en.wikipedia.org/wiki/WTFPL) or
 [CC0](http://en.wikipedia.org/wiki/Creative_Commons_license#Zero_.2F_Public_domain).
 Do what you want but please [follow me on Twitter](https://twitter.com/paldepind)
