@@ -104,6 +104,24 @@ describe('dffptch', function() {
     dffptch.patch(o1, delta);
     assert.deepEqual(o1, o2);
   });
+  it('only add recurse field if there are changes', function() {
+    var o1 = {
+      type: 'horse',
+      parent: {
+        type: 'goat',
+        color: 'grey'
+      }
+    };
+    var o2 = {
+      type: 'goat',
+      parent: {
+        type: 'goat',
+        color: 'grey',
+      }
+    };
+    var delta = dffptch.diff(o1, o2);
+    assert.equal(delta.r, undefined);
+  });
   it('handles everything at once', function() {
     var rabbit = {
       name: 'Trumph',

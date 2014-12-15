@@ -20,7 +20,7 @@ exports.diff = function diff(a, b) {
         // Find changs in the object recursively
         var rDelta = diff(aVal, bVal);
         // Add recursive delta if it contains modifications
-        if (keys(rDelta)) recurses[shortAKey] = rDelta;
+        if(keys(rDelta)[0]) recurses[shortAKey] = rDelta;
       } else if (aVal !== bVal) {
         mods[shortAKey] = bVal;
       }
