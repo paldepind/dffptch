@@ -4,8 +4,8 @@ A micro library for diffing and patching JSON objects using a compact diff forma
 
 Why
 ---
-If you're JavaScript client is sending a lot of updates to your backend – as it might
-in a collaborative app, a real-time game or a continously saving app – then
+If your JavaScript client is sending a lot of updates to your backend – as it might
+in a collaborative app, a real-time game or a continously saving app – 
 transfering the entire changed JSON wastes a lot of bandwitdh. dffptch.js
 makes sending only the changes in a compact format very easy.
 
