@@ -1,7 +1,7 @@
 {
   "name": "dffptch",
   "main": "dffptch.js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "authors": [
     "paldepind <simonfv@gmail.com>"
   ],
@@ -16,7 +16,6 @@
     "patch"
   ],
   "license": "CC0-1.0",
-  "private": true,
   "ignore": [
     "**/.*",
     "node_modules",
