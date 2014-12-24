@@ -47,7 +47,7 @@ Features
 --------
 * __What you expect__ – Handles all types of changes. Added, modified and
   deleted properties. Nested objects and arrays.
-* __Compact one way diffs__ – No needles verbosity. Property names
+* __Compact one way diffs__ – No needless verbosity. Property names
   are shortened to single characters while still remaining unambiguous.
 * __Performant__ – Sane choices of algorithms. For instance, when generating
   the delta the keys of the old and new object are sorted, and then all changes
