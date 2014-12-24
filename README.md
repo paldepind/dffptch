@@ -91,7 +91,7 @@ nested object.
 An example
 ```javascript
 {
-  a: {foo: 'bar'}, // One aded property
+  a: {foo: 'bar'}, // One added property
   m: {'3': 'hello'}, // One modified property
   d: ['5'], // One deleted property
   r: {'3': { ... }} Changes to one nested object
@@ -113,7 +113,7 @@ So for this object
 }
 ```
 we'd get the sorted keys `['an', 'foo', 'sample']` and thus `an` whould be shortened
-to `'1'`, `foo` to `'2'` and `sample` to `3`. There are _a lot_ of uniqode characters
+to `'1'`, `foo` to `'2'` and `sample` to `3`. There are _a lot_ of unicode characters
 so this approach is safe no matter how many properties your objects have.
 
 Browser support
