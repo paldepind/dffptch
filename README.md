@@ -6,7 +6,7 @@ Why
 ---
 If your JavaScript client is sending a lot of updates to your backend – as it might
 in a collaborative app, a real-time game or a continously saving app – 
-transfering the entire changed JSON wastes a lot of bandwitdh. dffptch.js
+transfering the entire changed JSON wastes a lot of bandwidth. dffptch.js
 makes sending only the changes in a compact format very easy.
 
 Example
@@ -119,7 +119,7 @@ so this approach is safe no matter how many properties your objects have.
 Browser support
 ---------------
 dffptch.js is environment independent (neither Node nor a browser is required).
-It does however use the two ECMAScript 6 functions
+It does however use the two ECMAScript 5 functions
 [`Object.keys`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys) and
 [`Array.prototype.map`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/map).
 If you require support for < IE9 you should polyfill those functions
