@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>dffptch.js – mirco diff and patch library</title>
+    <meta name="description" content="A micro library for diffing and patching JSON objects using a compact diff format." />
+    <meta name="keywords" content="js, javascript, diff, patch, micro, library" />
+    <meta name="robots" content="INDEX, FOLLOW" />
+    <meta name="author" content="paldepind" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+    <meta name="X-UA-Compatible" content="IE=edge" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link href='http://fonts.googleapis.com/css?family=Cardo|Inconsolata&subset=latin,greek' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="assets/grid/grid.css" />
+    <link rel="stylesheet" href="assets/grid/screens.css" />
+    <link rel="stylesheet" href="assets/normalize.css" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <div class="row title-col">
+        <div class="triangle">Δ</div>
+        <h1>dffptch.js</h1>
+        <p>
+          A micro library for diffing and patching JSON objects using a compact diff format
+        </p>
+    </div>
+    <div class="row">
+      <div class="col what-col">
+        <h2>What</h2>
+      </div>
+      <div class="col why-col">
+        <h2>Why</h2>
+        <p>
+          If your client is sending a lot of updates to your
+          backend – as it might in a collaborative app or real-time game –
+          transfering the entire changed JSON wastes a lot of bandwitdh.
+          dffptch.js makes sending only the changes
+          in a compact format very easy.
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col original-obj">
+        <h2>Original JSON</h2>
+      </div>
+      <div class="col modified-obj">
+        <h2>Modified JSON</h2>
+      </div>
+      <div class="col diff-obj">
+        <h2>Compact diff</h2>
+      </div>
+    </div>
+  </body>
+</html>
