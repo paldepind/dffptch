@@ -1,3 +1,1 @@
 define(function () {
-  var exports = {};
-

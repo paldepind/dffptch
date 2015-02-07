@@ -1,1 +1,2 @@
-}(this.dffptch = {}));
+e.dffptch = dffptch;
+}(this));
