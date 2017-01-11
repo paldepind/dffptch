@@ -26,6 +26,7 @@
   "dependencies": {
   },
   "devDependencies": {
-    "sinonjs": "~1.10.2"
+    "sinonjs": "~1.10.2",
+    "node-assert": "https://github.com/Jxck/assert.git"
   }
 }

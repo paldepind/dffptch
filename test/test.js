@@ -141,4 +141,23 @@ describe('dffptch', function() {
     dffptch.patch(rabbit, delta);
     assert.deepEqual(rabbit, updatedRabbit);
   });
+  it('add length parameter if new array length is smaller', function() {
+    var delta = dffptch.diff([1, 2, "home", "milk"], [1, 2]);
+    assert.equal(delta.l, 2);
+  });
+  it('skip length parameter if new array length is the same', function() {
+    var delta = dffptch.diff([1, 2, "home", "milk"], [1, 2, 8, 4]);
+    assert.equal(delta.l, undefined);
+  });
+  it('skip length parameter if new array is longer', function() {
+    var delta = dffptch.diff([1, 2], [1, 2, 8, 4, "home", "milk"]);
+    assert.equal(delta.l, undefined);
+  });
+  it('update array length if new array is shorter', function() {
+    var source = [4, 2, 8, 4, "home", "milk"],
+      delta = dffptch.diff(source, [1, 2]);
+    dffptch.patch(source, delta)
+    assert.equal(source.length, 2);
+    assert.deepEqual(source, [1, 2])
+  });
 });
