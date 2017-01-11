@@ -2,6 +2,7 @@
 
 var O = Object; // Our own binding to Object – global objects can't be minified
 var keys = O.keys; // Same for keys, we use this funcion quite a bit
+var isArray = Array.isArray;
 
 var dffptch = {
   diff: function diff(a, b) {
@@ -41,19 +42,24 @@ var dffptch = {
     if (keys(adds)[0]) delta.a = adds;
     if (keys(mods)[0]) delta.m = mods;
     if (keys(recurses)[0]) delta.r = recurses;
+    if (isArray(a) && isArray(b) && a.length > b.length) delta.l = a.length - b.length;
     return delta;
   },
   patch: function patch(obj, delta) {
     var operation, key, val, longKey, objKeys = keys(obj).sort();
     for (operation in delta) {
-      // Operation is either 'a', 'm', 'd' or 'r'
-      for (key in delta[operation]) {
-        val = delta[operation][key];
-        longKey = objKeys[(operation != 'd' ? key : val).charCodeAt()-48];
-        operation == 'a' ? obj[key] = val : // addition
-        operation == 'm' ? obj[longKey] = val : // modification
-        operation == 'd' ? delete obj[longKey] : // deletion
-                          patch(obj[longKey], val); // recuse
+      if (operation == 'l') {
+        obj.length -= delta['l'];
+      } else {
+        // Operation is either 'a', 'm', 'd' or 'r'
+        for (key in delta[operation]) {
+          val = delta[operation][key];
+          longKey = objKeys[(operation != 'd' ? key : val).charCodeAt()-48];
+          operation == 'a' ? obj[key] = val : // addition
+          operation == 'm' ? obj[longKey] = val : // modification
+          operation == 'd' ? delete obj[longKey] : // deletion
+                            patch(obj[longKey], val); // recuse
+        }
       }
     }
   }
